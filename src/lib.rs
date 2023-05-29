@@ -89,7 +89,7 @@ pub async fn await_request(stdin: &async_std::io::Stdin) -> Map<String, Value> {
     request
 }
 
-// Awaits an init message, builds a node based on this, and responds with init_ok.
+// Awaits an init message, builds a node based on this, responds with init_ok, and returns the node.
 pub async fn create_node(stdin: &async_std::io::Stdin) -> Node {
     let request = await_request(stdin).await;
     assert_eq!(request["body"]["type"], "init", "{request:?}");
